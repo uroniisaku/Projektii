@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Phone Store</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f1f1f1;
+    }
+    header {
+      background: #1a73e8;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .filter, .cart-summary {
+      text-align: center;
+      margin: 20px;
+    }
+    .filter button {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin: 0 5px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .filter button:hover {
+      background: #0f5dc0;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .product {
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .product img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    .product h3 {
+      margin: 10px 0 5px;
+    }
+    .product p {
+      font-size: 1.1em;
+      color: #555;
+    }
+    .product button {
+      background: #28a745;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .product button:hover {
+      background: #218838;
+    }
+    form {
+      background: white;
+      margin: 40px;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    form h2 {
+      text-align: center;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background: #1a73e8;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      margin-top: 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background: #0f5dc0;
+    }
+    footer {
+      text-align: center;
+      background: #1a73e8;
+      color: white;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>📱 My Phone Store</h1>
+    <p>Find the best phones from top brands</p>
+  </header>
+
+  <!-- Category Filter -->
+  <div class="filter">
+    <button onclick="filterProducts('all')">All</button>
+    <button onclick="filterProducts('apple')">Apple</button>
+    <button onclick="filterProducts('samsung')">Samsung</button>
+    <button onclick="filterProducts('google')">Google</button>
+    <button onclick="filterProducts('oneplus')">OnePlus</button>
+  </div>
+
+  <!-- Products -->
+  <section class="products" id="product-list">
+    <!-- APPLE -->
+    <div class="product apple">
+      <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-max-finish-select-202309-6-7inch-naturaltitanium?wid=5120&hei=2880&fmt=jpeg&qlt=80&.v=1692891068181" alt="iPhone 15 Pro Max">
+      <h3>iPhone 15 Pro Max</h3>
+      <p>$1,199</p>
+      <button onclick="addToCart('iPhone 15 Pro Max', 1199)">Add to Cart</button>
+    </div>
+    <div class="product apple">
+      <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-1inch-blue_AV1_GEO_EMEA?wid=5120&hei=2880&fmt=jpeg&qlt=80&.v=1661027826058" alt="iPhone 14">
+      <h3>iPhone 14</h3>
+      <p>$799</p>
+      <button onclick="addToCart('iPhone 14', 799)">Add to Cart</button>
+    </div>
+    <div class="product apple">
+      <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-mini-green-select?wid=5120&hei=2880&fmt=jpeg&qlt=80&.v=1645036275539" alt="iPhone 13">
+      <h3>iPhone 13</h3>
+      <p>$699</p>
+      <button onclick="addToCart('iPhone 13', 699)">Add to Cart</button>
+    </div>
+    <div class="product apple">
+      <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-se-black-select-2022?wid=5120&hei=2880&fmt=jpeg&qlt=80&.v=1644986585517" alt="iPhone SE">
+      <h3>iPhone SE (2022)</h3>
+      <p>$429</p>
+      <button onclick="addToCart('iPhone SE', 429)">Add to Cart</button>
+    </div>
+  
+    <!-- SAMSUNG -->
+    <div class="product samsung">
+      <img src="https://images.samsung.com/is/image/samsung/p6pim/in/sm-s918bzsdins/gallery/in-galaxy-s23-ultra-s918-sm-s918bzsdins-535160547?$650_519_PNG$" alt="Galaxy S23 Ultra">
+      <h3>Galaxy S23 Ultra</h3>
+      <p>$1,099</p>
+      <button onclick="addToCart('Galaxy S23 Ultra', 1099)">Add to Cart</button>
+    </div>
+    <div class="product samsung">
+      <img src="https://images.samsung.com/is/image/samsung/p6pim/levant/sm-a546ezkdmea/gallery/levant-galaxy-a54-5g-sm-a546-sm-a546ezkdmea-536110162?$650_519_PNG$" alt="Galaxy A54">
+      <h3>Galaxy A54</h3>
+      <p>$449</p>
+      <button onclick="addToCart('Galaxy A54', 449)">Add to Cart</button>
+    </div>
+    <div class="product samsung">
+      <img src="https://images.samsung.com/is/image/samsung/p6pim/levant/sm-s901ezwdmea/gallery/levant-galaxy-s22-s901-sm-s901ezwdmea-530958993?$650_519_PNG$" alt="Galaxy S22">
+      <h3>Galaxy S22</h3>
+      <p>$749</p>
+      <button onclick="addToCart('Galaxy S22', 749)">Add to Cart</button>
+    </div>
+    <div class="product samsung">
+      <img src="https://images.samsung.com/is/image/samsung/assets/global/galaxy-z-flip5/gallery/Galaxy-Z-Flip5_Front-Back_Graphite.png?$650_519_PNG$" alt="Galaxy Z Flip5">
+      <h3>Galaxy Z Flip5</h3>
+      <p>$999</p>
+      <button onclick="addToCart('Galaxy Z Flip5', 999)">Add to Cart</button>
+    </div>
+  
+    <!-- GOOGLE -->
+    <div class="product google">
+      <img src="https://store.google.com/product/images/pixel_8_pro_black_front_back.png" alt="Pixel 8 Pro">
+      <h3>Pixel 8 Pro</h3>
+      <p>$999</p>
+      <button onclick="addToCart('Pixel 8 Pro', 999)">Add to Cart</button>
+    </div>
+    <div class="product google">
+      <img src="https://store.google.com/us/product/images/pixel_7a_charcoal_front_back.png" alt="Pixel 7a">
+      <h3>Pixel 7a</h3>
+      <p>$499</p>
+      <button onclick="addToCart('Pixel 7a', 499)">Add to Cart</button>
+    </div>
+    <div class="product google">
+      <img src="https://store.google.com/us/product/images/pixel_6_front_back_sorta_seafoam.png" alt="Pixel 6">
+      <h3>Pixel 6</h3>
+      <p>$599</p>
+      <button onclick="addToCart('Pixel 6', 599)">Add to Cart</button>
+    </div>
+    <div class="product google">
+      <img src="https://store.google.com/us/product/images/pixel_fold_carbon_front_back.png" alt="Pixel Fold">
+      <h3>Pixel Fold</h3>
+      <p>$1,799</p>
+      <button onclick="addToCart('Pixel Fold', 1799)">Add to Cart</button>
+    </div>
+  
+    <!-- ONEPLUS -->
+    <div class="product oneplus">
+      <img src="https://image01.oneplus.net/ebp/202401/26/1-m00-42-60-cpg7lmynq4aaikxnaaqoy4bj3ls442_840_840.png" alt="OnePlus 12">
+      <h3>OnePlus 12</h3>
+      <p>$799</p>
+      <button onclick="addToCart('OnePlus 12', 799)">Add to Cart</button>
+    </div>
+    <div class="product oneplus">
+      <img src="https://image01.oneplus.net/ebp/202307/14/1-m00-4e-39-cpg3w2sdcsaaak1naajhsu9zhoc584.png" alt="OnePlus Nord N30">
+      <h3>OnePlus Nord N30</h3>
+      <p>$299</p>
+      <button onclick="addToCart('OnePlus Nord N30', 299)">Add to Cart</button>
+    </div>
+    <div class="product oneplus">
+      <img src="https://image01.oneplus.net/ebp/202301/05/1-m00-45-ea-cpg7lmot8v2aov1laanjjl1bbrw675.png" alt="OnePlus 11">
+      <h3>OnePlus 11</h3>
+      <p>$699</p>
+      <button onclick="addToCart('OnePlus 11', 699)">Add to Cart</button>
+    </div>
+    <div class="product oneplus">
+      <img src="https://image01.oneplus.net/ebp/202210/03/1-m00-3b-e2-cpg7lmqztdaagmiyaagee-ec3r0701.png" alt="OnePlus 10T">
+      <h3>OnePlus 10T</h3>
+      <p>$649</p>
+      <button onclick="addToCart('OnePlus 10T', 649)">Add to Cart</button>
+    </div>
+  
+    <!-- XIAOMI -->
+    <div class="product xiaomi">
+      <img src="https://i01.appmifile.com/webfile/globalimg/products/pc/xiaomi-13-pro/black.jpg" alt="Xiaomi 13 Pro">
+      <h3>Xiaomi 13 Pro</h3>
+      <p>$899</p>
+      <button onclick="addToCart('Xiaomi 13 Pro', 899)">Add to Cart</button>
+    </div>
+    <div class="product xiaomi">
+      <img src="https://i01.appmifile.com/webfile/globalimg/products/pc/redmi-note-12/section02-phone01.png" alt="Redmi Note 12">
+      <h3>Redmi Note 12</h3>
+      <p>$229</p>
+      <button onclick="addToCart('Redmi Note 12', 229)">Add to Cart</button>
+    </div>
+    <div class="product xiaomi">
+      <img src="https://i01.appmifile.com/webfile/globalimg/products/pc/xiaomi-12t-pro/overview01.jpg" alt="Xiaomi 12T Pro">
+      <h3>Xiaomi 12T Pro</h3>
+      <p>$749</p>
+      <button onclick="addToCart('Xiaomi 12T Pro', 749)">Add to Cart</button>
+    </div>
+    <div class="product xiaomi">
+      <img src="https://i01.appmifile.com/webfile/globalimg/products/pc/poco-x5-pro-5g/section01-1.png" alt="Poco X5 Pro">
+      <h3>Poco X5 Pro</h3>
+      <p>$299</p>
+      <button onclick="addToCart('Poco X5 Pro', 299)">Add to Cart</button>
+    </div>
+  </section>
+  
+
+  <!-- Shopping Cart Summary -->
+  <div class="cart-summary" id="cart-summary">
+    <h2>🛒 Cart: <span id="cart-count">0</span> items - Total: $<span id="cart-total">0</span></h2>
+  </div>
+
+  <!-- Contact Form -->
+  <form id="contact-form">
+    <h2>Contact Us</h2>
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+
+  <footer>
+    <p>&copy; 2025 My Phone Store. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    let cart = [];
+    
+    function addToCart(product, price) {
+      cart.push({ product, price });
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartCount = document.getElementById('cart-count');
+      const cartTotal = document.getElementById('cart-total');
+      cartCount.textContent = cart.length;
+      cartTotal.textContent = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+    }
+
+    function filterProducts(category) {
+      const products = document.querySelectorAll('.product');
+      products.forEach(product => {
+        if (category === 'all' || product.classList.contains(category)) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    }
+
+    // Fake form handler (you can add real email later with Formspree, EmailJS, etc.)
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("Thanks for contacting us! We'll get back to you soon.");
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
